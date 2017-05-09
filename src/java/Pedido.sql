@@ -1,0 +1,12 @@
+DROP TABLE pedido;
+
+CREATE TABLE pedido
+(
+	id INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+	pedido INTEGER,
+	dono VARCHAR(30) NOT NULL,
+        valor REAL,
+        nome VARCHAR(90) NOT NULL,
+        atualizacao TIMESTAMP
+);
+
