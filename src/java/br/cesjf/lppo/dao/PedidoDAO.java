@@ -8,14 +8,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContatoDAO {
+public class PedidoDAO {
     private final PreparedStatement opListar;
     private final PreparedStatement opNovo;
     private final PreparedStatement opAtualiza;
     private final PreparedStatement opBuscaPorId;
     
 
-    public ContatoDAO() throws Exception {
+    public PedidoDAO() throws Exception {
         Connection conexao = ConnectionFactory.createConnection();
         opListar = conexao.prepareStatement("SELECT * FROM pedido");
         opBuscaPorId = conexao.prepareStatement("SELECT * FROM pedido WHERE id =?");
@@ -89,6 +89,12 @@ public class ContatoDAO {
         try {
             
             opAtualiza.clearParameters();
+            opAtualiza.setLong(1, pedido.getId());
+            opAtualiza.setInt(2, pedido.getPedido());
+            opAtualiza.setString(3, pedido.getDono());
+            opAtualiza.setFloat(4, pedido.getValor());
+            opAtualiza.setString(5, pedido.getNome());
+            opAtualiza.setString(6, pedido.getDataHora());
             opAtualiza.executeUpdate();
 
 
