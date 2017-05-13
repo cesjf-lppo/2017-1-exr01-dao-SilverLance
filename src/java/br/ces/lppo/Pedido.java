@@ -1,6 +1,8 @@
 
 package br.ces.lppo;
 
+import java.util.Date;
+
 
 public class Pedido {
     private Long id;
@@ -8,7 +10,7 @@ public class Pedido {
     private String dono;
     private float valor;
     private String nome;
-    private String DataHora;
+    private Date DataHora;
     
     public Pedido(){
         
@@ -87,14 +89,14 @@ public class Pedido {
     /**
      * @return the DataHora
      */
-    public String getDataHora() {
+    public Date getDataHora() {
         return DataHora;
     }
 
     /**
      * @param DataHora the DataHora to set
      */
-    public void setDataHora(String DataHora) {
+    public void setDataHora(Date DataHora) {
         this.DataHora = DataHora;
     }
 }
