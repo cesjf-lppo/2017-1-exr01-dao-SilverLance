@@ -2,6 +2,7 @@ package br.cesjf.lppo.dao;
 
 import br.ces.lppo.Pedido;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,7 +37,7 @@ public class PedidoDAO {
                 novoPedido.setDono(resultado.getString("dono"));
                 novoPedido.setValor(resultado.getFloat("valor"));
                 novoPedido.setNome(resultado.getString("nome"));
-                novoPedido.setDataHora(resultado.getString("atualização"));
+                novoPedido.setDataHora(resultado.getDate("atualização"));
                 pedidos.add(novoPedido);
             }
 
@@ -59,7 +60,7 @@ public class PedidoDAO {
                 pedido.setDono(resultado.getString("dono"));
                 pedido.setValor(resultado.getFloat("valor"));
                 pedido.setNome(resultado.getString("nome"));
-                pedido.setDataHora(resultado.getString("atualização"));
+                pedido.setDataHora(resultado.getDate("atualização"));
             }
             return pedido;
         } catch (SQLException ex) {
@@ -76,7 +77,7 @@ public class PedidoDAO {
             opNovo.setString(3, novoPedido.getDono());
             opNovo.setFloat(4, novoPedido.getValor());
             opNovo.setString(5, novoPedido.getNome());
-            opNovo.setString(6, novoPedido.getDataHora());
+            opNovo.setDate(6, (Date) novoPedido.getDataHora());
             opNovo.executeUpdate();
 
 
@@ -94,7 +95,7 @@ public class PedidoDAO {
             opAtualiza.setString(3, pedido.getDono());
             opAtualiza.setFloat(4, pedido.getValor());
             opAtualiza.setString(5, pedido.getNome());
-            opAtualiza.setString(6, pedido.getDataHora());
+            opAtualiza.setDate(6, (Date) pedido.getDataHora());
             opAtualiza.executeUpdate();
 
 
