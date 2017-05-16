@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <nav>
-    <h2>Agenda!</h2>
+    <h2>Menu!</h2>
     <ul>
         <li><a href="pedidos.html">Listar</a></li>
         <li><a href="novo.html">Novo</a></li>

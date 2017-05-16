@@ -7,6 +7,6 @@ CREATE TABLE pedido
 	dono VARCHAR(30) NOT NULL,
         valor REAL,
         nome VARCHAR(90) NOT NULL,
-        atualizacao TIMESTAMP
+        atualizacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

@@ -2,10 +2,10 @@ package br.cesjf.lppo.dao;
 
 import br.ces.lppo.Pedido;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +20,8 @@ public class PedidoDAO {
         Connection conexao = ConnectionFactory.createConnection();
         opListar = conexao.prepareStatement("SELECT * FROM pedido");
         opBuscaPorId = conexao.prepareStatement("SELECT * FROM pedido WHERE id =?");
-        opNovo = conexao.prepareStatement("INSERT INTO pedido(pedido, dono, valor, nome, atualização) VALUES(?,?,?,?,?)");
-        opAtualiza = conexao.prepareStatement("UPDATE pedido SET pedido = ?, dono = ?, valor=?, nome = ?, atualização = ? WHERE id = ?");
+        opNovo = conexao.prepareStatement("INSERT INTO pedido(pedido, dono, valor, nome, atualizacao) VALUES(?,?,?,?,?)");
+        opAtualiza = conexao.prepareStatement("UPDATE pedido SET pedido = ?, dono = ?, valor=?, nome = ?, atualizacao = ? WHERE id = ?");
         
     }
 
@@ -37,7 +37,7 @@ public class PedidoDAO {
                 novoPedido.setDono(resultado.getString("dono"));
                 novoPedido.setValor(resultado.getFloat("valor"));
                 novoPedido.setNome(resultado.getString("nome"));
-                novoPedido.setDataHora(resultado.getDate("atualização"));
+                novoPedido.setDataHora(resultado.getTimestamp("atualizacao"));
                 pedidos.add(novoPedido);
             }
 
@@ -60,7 +60,7 @@ public class PedidoDAO {
                 pedido.setDono(resultado.getString("dono"));
                 pedido.setValor(resultado.getFloat("valor"));
                 pedido.setNome(resultado.getString("nome"));
-                pedido.setDataHora(resultado.getDate("atualização"));
+                pedido.setDataHora(resultado.getTimestamp("atualizacao"));
             }
             return pedido;
         } catch (SQLException ex) {
@@ -72,12 +72,11 @@ public class PedidoDAO {
         try {
             
             opNovo.clearParameters();
-            opNovo.setLong(1, novoPedido.getId());
-            opNovo.setInt(2, novoPedido.getPedido());
-            opNovo.setString(3, novoPedido.getDono());
-            opNovo.setFloat(4, novoPedido.getValor());
-            opNovo.setString(5, novoPedido.getNome());
-            opNovo.setDate(6, (Date) novoPedido.getDataHora());
+            opNovo.setInt(1, novoPedido.getPedido());
+            opNovo.setString(2, novoPedido.getDono());
+            opNovo.setFloat(3, novoPedido.getValor());
+            opNovo.setString(4, novoPedido.getNome());
+            opNovo.setTimestamp(5, new Timestamp (novoPedido.getDataHora().getTime()));
             opNovo.executeUpdate();
 
 
@@ -95,7 +94,7 @@ public class PedidoDAO {
             opAtualiza.setString(3, pedido.getDono());
             opAtualiza.setFloat(4, pedido.getValor());
             opAtualiza.setString(5, pedido.getNome());
-            opAtualiza.setDate(6, (Date) pedido.getDataHora());
+            opAtualiza.setTimestamp(6, (Timestamp) pedido.getDataHora());
             opAtualiza.executeUpdate();
 
 
