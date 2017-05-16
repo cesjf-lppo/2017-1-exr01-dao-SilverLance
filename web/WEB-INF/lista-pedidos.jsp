@@ -22,7 +22,7 @@
                 </tr>
             </thead>    
             <tbody>
-                <c:forEach var="pedidos" items="${pedidos}">    
+                <c:forEach var="pedidos" items="${pedido}">    
                 <tr>
                     <td><a href="detalhes.html?id=${pedido.id}">${pedido.id}</a></td>
                     <td>${pedido.pedido}</td>

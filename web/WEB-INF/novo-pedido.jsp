@@ -14,7 +14,6 @@
             <div><label> Dono: <input type="text" name="dono" value="${pedido.dono}" /></label> </div>
             <div><label> Valor: <input type="text" name="valor" value="${pedido.valor}" /></label> </div>
             <div><label> Nome: <input type="text" name="nome" value="${pedido.nome}" /></label> </div>
-            <div><label> DataHora: <input type="text" name="dataHora" value="${pedido.dataHora}" /></label> </div>
             <div><input type="submit" /></div>   
         </form>
     </body>
