@@ -10,7 +10,7 @@
         <%@include file="jspf/menu.jspf" %>
         <h1>Lista de Pedidos</h1>
         <div style="color: red;">${mensagem}</div>
-        <table>
+        <table border="1px">
             <thead>
                 <tr>
                 <th>ID</th>
@@ -19,19 +19,22 @@
                 <th>Valor</th>
                 <th>Nome</th>
                 <th>Data e Hora</th>
+                <th></th>
                 </tr>
             </thead>    
             <tbody>
-                <c:forEach var="pedidos" items="${pedido}">    
+                <c:forEach var="pedido" items="${pedidos}">    
                 <tr>
                     <td><a href="detalhes.html?id=${pedido.id}">${pedido.id}</a></td>
                     <td>${pedido.pedido}</td>
                     <td>${pedido.dono}</td>
                     <td>${pedido.valor}</td>
                     <td>${pedido.nome}</td>
-                    <td>${pedido.DataHora}</td>
+                    <td>${pedido.atualizacao}</td>
+                    <td><a href="exclui.html?id=${pedido.id}">X</a></td>
                 </tr>
                 </c:forEach>
             </tbody>
+        </table>
     </body>
 </html>

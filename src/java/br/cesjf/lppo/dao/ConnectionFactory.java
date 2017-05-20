@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 
 public class ConnectionFactory {
-    private static final String URL ="jdbc:derby://localhost:1527/lppo-2017-1"; //Vira constante
+    private static final String URL ="jdbc:derby://localhost:1527/lppo-2017-1";
     private static final String DRIVER ="org.apache.derby.jdbc.ClientDriver"; 
     private static final String USER ="usuario"; 
     private static final String PASSWORD ="senha"; 
